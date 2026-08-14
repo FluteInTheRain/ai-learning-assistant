@@ -1,0 +1,34 @@
+[project]
+name = "day1-init-project-structure"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.141.1",
+    "pydantic>=2.13.4",
+    "requests>=2.34.2",
+    "uvicorn>=0.52.1",
+]
+
+[dependency-groups]
+dev = [
+    "httpx>=0.28.1",
+    "pyright>=1.1.411",
+    "pytest>=9.1.1",
+    "pytest-cov>=7.1.0",
+    "ruff>=0.16.2",
+]
+
+[tool.ruff]
+line-length=88 # gioi han toi da moi dong 88 ki tu, 88 = tieu chuan mac dinh, pho bien
+target-version="py312" # goi y cu phap chuan python 3.12
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "UP", "B"] # Errors, Flake8, Isort, Naming, PyUpgrade, Bugbear
+ignore = []
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+addopts = "-ra -q --cov=src"
+testpaths = ["tests"]
