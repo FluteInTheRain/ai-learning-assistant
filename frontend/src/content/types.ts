@@ -50,3 +50,43 @@ export interface Post {
   body: string
   tag: string
 }
+
+export interface AuthAsideContent {
+  brand: { name: string; tagline: string }
+  quote: string
+  attribution: string
+  stats: Stat[]
+}
+
+export type TrackPreference = 'applied' | 'technical'
+
+export interface TrackOption {
+  value: TrackPreference
+  title: string
+  blurb: string
+}
+
+export interface SignupContent {
+  aside: AuthAsideContent
+  kicker: string
+  title: string
+  sub: string
+  fields: {
+    fullName: { label: string; placeholder: string }
+    email: { label: string; placeholder: string }
+    password: { label: string; placeholder: string; hint: string }
+  }
+  trackLabel: string
+  trackOptions: TrackOption[]
+  submit: string
+  divider: string
+  sso: string
+  terms: string
+  switchNote: string
+  switchAction: string
+  errors: {
+    emailTaken: string
+    generic: string
+    trackRequired: string
+  }
+}
