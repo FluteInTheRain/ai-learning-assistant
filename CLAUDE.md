@@ -35,7 +35,8 @@ Stored document → Action (Summarize | Generate quiz | ...) → Build prompt fr
 - React + TypeScript, built with Vite.
 - TanStack Query (`@tanstack/react-query`) for data fetching/caching, including polling document status while ingestion is in progress.
 - react-router-dom for routing.
-- CSS written by hand — no Tailwind or UI kit.
+- Redux Toolkit (`@reduxjs/toolkit` + `react-redux`) manages a small, single-purpose slice of client/UI state only — currently just the theme (light/dark/system) preference and its persistence. TanStack Query remains the sole owner of all server state (sessions, documents, generated content); Redux never fetches from the API, never duplicates server state, and holds no business logic.
+- CSS written by hand using CSS custom-property design tokens (`frontend/src/styles/tokens.css`) for light/dark theming — no Tailwind or UI kit. Visual identity is "Quiet Scholarship": an editorial, academic-gravitas palette (Tsinghua-purple primary + a single restrained brass accent) paired with a three-role type system (Source Serif 4 for headings, IBM Plex Sans for UI/body, IBM Plex Mono for metadata/labels), self-hosted via `@fontsource`.
 - Vitest + React Testing Library for tests.
 - Lives in `frontend/`, talks to the backend only over HTTP/JSON. It is a pure API consumer: no direct DB/OpenAI access, and no reimplementation of service-layer business logic (status transitions, validation, quiz parsing rules, etc.) — it only calls the API and renders the response.
 
@@ -132,6 +133,7 @@ v0 Session-based document generation (Summarize/Quiz) → v1 Hybrid search + rer
 - Do not introduce LangChain unless explicitly requested.
 - Do not change architecture (layering, DB schema, API contracts) without discussing it first.
 - The frontend is a pure API consumer — it renders data from the backend HTTP API and never duplicates backend business/validation logic or accesses the DB/OpenAI directly.
+- Redux Toolkit is scoped to client/UI state (currently: theme) — do not add server-state slices or speculative new slices (toasts, modals, etc.) without discussing it first.
 
 ## Verification
 
