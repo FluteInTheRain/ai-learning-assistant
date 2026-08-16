@@ -1,0 +1,10 @@
+{
+  "brand": {
+    "name": "ALETHEIA",
+    "tagline": "AI Academy"
+  },
+  "theme": {
+    "dark": "Dark",
+    "light": "Light"
+  }
+}

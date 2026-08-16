@@ -1,9 +1,8 @@
-# AI Learning Assistant — Frontend
+# Aletheia — Frontend
 
-React + TypeScript SPA (Vite) that consumes the backend API: create sessions,
-upload PDFs, and trigger the "Summarize" / "Generate quiz questions" actions.
+React + TypeScript SPA (Vite) for the Aletheia course platform. See the repo root [CLAUDE.md](../CLAUDE.md) for the product definition and [DESIGN.md](../DESIGN.md) for the screen-by-screen design reference.
 
-Pure API consumer — no direct DB/OpenAI access, no duplicated backend logic.
+Currently implements the landing page only (`/`) — no backend exists yet to consume, so this runs standalone.
 
 ## Setup
 
@@ -12,13 +11,18 @@ npm install
 npm run dev      # starts the dev server on http://localhost:5173
 ```
 
-Requires the backend running at the URL configured in `.env.development`
-(`VITE_API_BASE_URL`, defaults to `http://localhost:8000`) with CORS enabling
-`http://localhost:5173` (see `CORS_ORIGINS` in the backend `.env`).
+## Content architecture
+
+Follow this pattern for every new page (established by the landing page — see `src/pages/LandingPage.tsx`, `src/components/landing/`, `src/content/`):
+
+- `src/i18n/locales/en/<page>.json` — raw copy
+- `src/content/use<Page>Content.ts` — the only place that reads i18n for that page; returns typed content. Components take content as props, never call `useTranslation()` directly.
+- `src/content/routes.ts` / `src/content/navigation.ts` — shared route and nav-item constants; extend these rather than hardcoding strings
+- One presentational component per section under `src/components/<page>/`, each with a co-located CSS file
 
 ## Scripts
 
 - `npm run dev` — start the Vite dev server.
-- `npm run test` — run the Vitest test suite.
+- `npm run test` — run the Vitest test suite (no tests currently exist).
 - `npm run build` — type-check (`tsc -b`) and build for production.
 - `npm run lint` — run oxlint.

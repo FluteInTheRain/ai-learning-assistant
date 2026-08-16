@@ -81,10 +81,12 @@ p {
 
 a {
   color: var(--color-accent);
+  text-decoration: none;
   text-underline-offset: 3px;
 }
 a:hover {
   color: var(--color-accent-300);
+  text-decoration: underline;
 }
 
 img {
@@ -94,6 +96,43 @@ img {
 
 .text-muted {
   color: color-mix(in srgb, var(--color-text) 55%, transparent);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Theme toggle — segmented dark/light control used in page headers       */
+/* ---------------------------------------------------------------------- */
+
+.theme-toggle {
+  display: inline-flex;
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.theme-toggle__option {
+  font-family: var(--font-body);
+  font-size: 11.5px;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  padding: 6px 11px;
+  border: 0;
+  background: transparent;
+  color: color-mix(in srgb, var(--color-text) 50%, transparent);
+}
+.theme-toggle__option--active {
+  background: color-mix(in srgb, var(--color-accent) 20%, transparent);
+  color: var(--color-accent-200);
 }
 
 /* ---------------------------------------------------------------------- */
@@ -189,6 +228,16 @@ img {
 .btn-block {
   width: 100%;
   margin-top: var(--space-2);
+}
+
+/* Size modifier — the marketing/landing CTAs use bigger padding than the
+   default `.btn` (sized for dense app chrome), matching the design's
+   hand-styled hero buttons. */
+.btn--lg {
+  font-size: 14.5px;
+  font-weight: 500;
+  padding: 12px 24px;
+  gap: 8px;
 }
 
 /* ---------------------------------------------------------------------- */
@@ -357,4 +406,36 @@ textarea.input {
   justify-content: flex-end;
   gap: var(--space-2);
   margin-top: var(--space-2);
+}
+
+/* ---------------------------------------------------------------------- */
+/* Section layout — generic page-section wrapper + heading group, shared  */
+/* across any page built from stacked content sections (not landing-only) */
+/* ---------------------------------------------------------------------- */
+
+.section {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 92px 40px 20px;
+}
+.section-kicker {
+  font-size: 10.5px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 16px;
+}
+.section-title {
+  font-size: 42px;
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.022em;
+  margin: 0;
+}
+.section-lede {
+  font-size: 16px;
+  line-height: 1.62;
+  color: color-mix(in srgb, var(--color-text) 62%, transparent);
+  margin: 0;
+  max-width: 56ch;
 }

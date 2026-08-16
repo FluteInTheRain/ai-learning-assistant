@@ -1,0 +1,160 @@
+{
+  "nav": {
+    "roadmap": "Roadmap",
+    "courses": "Courses",
+    "journal": "Journal",
+    "about": "About"
+  },
+  "ctaPrimary": "Start learning",
+  "kicker": "AI Academy · Established 2024",
+  "hero": {
+    "titleLead": "An AI academy for",
+    "titleAccent": "serious learners.",
+    "body": "Two tracks, six stages, a library of short lessons and code labs that run in the browser. No shortcuts — only foundations.",
+    "imgCampus": "[ study space photo — dark ground ]"
+  },
+  "ctaRoadmap": "See the roadmap",
+  "ctaBrowse": "Browse courses",
+  "ctaTalk": "Talk to an advisor",
+  "stats": [
+    { "value": "48", "label": "Courses & short lessons" },
+    { "value": "120+", "label": "Runnable labs" },
+    { "value": "31", "label": "Content specialists" },
+    { "value": "14,000", "label": "Learners enrolled" }
+  ],
+  "roadmap": {
+    "kicker": "Roadmap",
+    "title": "Two tracks, six stages, one destination.",
+    "body": "You don't need to code to begin. The Applied track is for professionals in other fields; the Technical track is for engineers and researchers. Both share one conceptual vocabulary, so you can switch lanes at any point."
+  },
+  "tracks": [
+    {
+      "name": "Applied track",
+      "badge": "No code needed",
+      "blurb": "For content, business, operations and management people — understand AI deeply enough to use it and decide well.",
+      "stages": [
+        {
+          "num": "I",
+          "title": "How AI actually works",
+          "body": "How models learn from data, why they fail, and where the real limits sit.",
+          "meta": "6 LESSONS · 4 HRS"
+        },
+        {
+          "num": "II",
+          "title": "AI in your work",
+          "body": "Prompt design, workflows with a model inside, and measurement instead of vibes.",
+          "meta": "9 LESSONS · 7 HRS"
+        },
+        {
+          "num": "III",
+          "title": "Leading an organisation",
+          "body": "Weighing risk, data and cost; choosing what to automate and what to leave alone.",
+          "meta": "7 LESSONS · 6 HRS"
+        }
+      ]
+    },
+    {
+      "name": "Technical track",
+      "badge": "With labs",
+      "blurb": "For engineers, students and researchers — write code, train models, ship them, and read the literature.",
+      "stages": [
+        {
+          "num": "I",
+          "title": "Data foundations & Python",
+          "body": "Linear algebra, probability and data wrangling, learned in live notebooks.",
+          "meta": "12 LESSONS · 15 HRS"
+        },
+        {
+          "num": "II",
+          "title": "Machine & deep learning",
+          "body": "From regression to transformers: implement, train and debug them yourself.",
+          "meta": "18 LESSONS · 26 HRS"
+        },
+        {
+          "num": "III",
+          "title": "LLMs, RAG & agents",
+          "body": "Fine-tuning, retrieval, multi-step agents, and getting them into production.",
+          "meta": "15 LESSONS · 22 HRS"
+        }
+      ]
+    }
+  ],
+  "courses": {
+    "kicker": "Library",
+    "title": "Courses and short lessons.",
+    "all": "View all 48 courses",
+    "items": [
+      {
+        "kicker": "Foundations",
+        "level": "Beginner",
+        "title": "Artificial intelligence, explained from scratch",
+        "body": "Six short lessons that assemble the whole picture: data, models, training, inference.",
+        "lessons": "6 LESSONS",
+        "hours": "4 HRS",
+        "labs": "FREE",
+        "img": "[ course image ]"
+      },
+      {
+        "kicker": "Technical",
+        "level": "Intermediate",
+        "title": "Deep learning with PyTorch",
+        "body": "Reimplement each layer, train on shared GPUs, and compare against real baselines.",
+        "lessons": "18 LESSONS",
+        "hours": "26 HRS",
+        "labs": "PREMIUM",
+        "img": "[ course image ]"
+      },
+      {
+        "kicker": "Applied",
+        "level": "Intermediate",
+        "title": "Building enterprise RAG systems",
+        "body": "From internal documents to cited answers: chunking, embedding, retrieval, evaluation.",
+        "lessons": "11 LESSONS",
+        "hours": "14 HRS",
+        "labs": "PREMIUM",
+        "img": "[ course image ]"
+      },
+      {
+        "kicker": "Advanced",
+        "level": "Advanced",
+        "title": "Multi-step agents and tools",
+        "body": "Planning, tool calls, self-verification — and how to keep an agent on the rails.",
+        "lessons": "15 LESSONS",
+        "hours": "22 HRS",
+        "labs": "PREMIUM",
+        "img": "[ course image ]"
+      }
+    ]
+  },
+  "journal": {
+    "kicker": "Journal",
+    "title": "Essays from our content team.",
+    "body": "One short analysis each week: a single concept opened down to its mechanism, with runnable examples.",
+    "posts": [
+      {
+        "date": "Aug 12, 2026",
+        "title": "Why a model stays confident while being wrong",
+        "body": "Rereading hallucination through the probability mechanics of token sampling, with a small experiment you can rerun.",
+        "tag": "Essay"
+      },
+      {
+        "date": "Jul 29, 2026",
+        "title": "Reading AI papers without drowning",
+        "body": "A seven-step order for opening a deep learning paper: from the architecture figure to the experiments — and the parts everyone skips.",
+        "tag": "Method"
+      },
+      {
+        "date": "Jul 15, 2026",
+        "title": "Text embeddings: what the textbooks leave out",
+        "body": "Where embedding space distorts, why cosine similarity misleads, and what to measure instead.",
+        "tag": "Lab note"
+      }
+    ]
+  },
+  "closing": {
+    "kicker": "Autumn intake",
+    "title": "Begin at the first stage, today.",
+    "body": "Preview the whole roadmap, take the first three lessons of any stage, and decide only once you know where you are headed."
+  },
+  "footerNote": "Hanoi · Online and self-paced"
+}
