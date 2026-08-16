@@ -1,11 +1,33 @@
+from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse, RedirectResponse
 
-from fastapi import FastAPI, HTTPException
-from fastapi.responses import RedirectResponse
+from app.api.documents import documents_router, session_documents_router
+from app.api.sessions import router as sessions_router
+from app.config import get_settings
+from app.ingestion.parser import PdfParseError
+from app.services.exceptions import (
+    DocumentNotReadyError,
+    DocumentParsingError,
+    GenerationFailedError,
+    NotFoundError,
+    UnsupportedActionError,
+    UnsupportedFileTypeError,
+)
 
-from app.database import db
-from app.models import ItemCreate, ItemResponse, ItemUpdate
+app = FastAPI(title="AI Learning Assistant")
 
-app = FastAPI(title="Tiny FastAPI CRUD Baseline")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=get_settings().cors_origins_list,
+    allow_credentials=False,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+app.include_router(sessions_router)
+app.include_router(session_documents_router)
+app.include_router(documents_router)
 
 
 @app.get("/")
@@ -13,36 +35,46 @@ def root() -> RedirectResponse:
     return RedirectResponse(url="/docs")
 
 
-@app.post("/items", response_model=ItemResponse)
-def create_item(item_in: ItemCreate) -> ItemResponse:
-    return db.create(item_in)
+@app.exception_handler(NotFoundError)
+async def not_found_handler(request: Request, exc: NotFoundError) -> JSONResponse:
+    return JSONResponse(status_code=404, content={"detail": str(exc)})
 
 
-@app.get("/items", response_model=list[ItemResponse])
-def read_items() -> list[ItemResponse]:
-    return db.get_all()
+@app.exception_handler(UnsupportedFileTypeError)
+async def unsupported_file_type_handler(
+    request: Request, exc: UnsupportedFileTypeError
+) -> JSONResponse:
+    return JSONResponse(status_code=400, content={"detail": str(exc)})
 
 
-@app.get("/items/{item_id}", response_model=ItemResponse)
-def read_item(item_id: int) -> ItemResponse:
-    item = db.get_by_id(item_id)
-    if item is None:
-        raise HTTPException(status_code=404, detail="Item not found")
-    return item
+@app.exception_handler(DocumentNotReadyError)
+async def document_not_ready_handler(
+    request: Request, exc: DocumentNotReadyError
+) -> JSONResponse:
+    return JSONResponse(status_code=409, content={"detail": str(exc)})
 
 
-@app.put("/items/{item_id}", response_model=ItemResponse)
-def update_item(item_id: int, item_in: ItemUpdate) -> ItemResponse:
-    item = db.update(item_id, item_in)
-    if item is None:
-        raise HTTPException(status_code=404, detail="Item not found")
-    return item
+@app.exception_handler(DocumentParsingError)
+async def document_parsing_error_handler(
+    request: Request, exc: DocumentParsingError
+) -> JSONResponse:
+    return JSONResponse(status_code=422, content={"detail": str(exc)})
 
 
-@app.delete("/items/{item_id}", response_model=ItemResponse)
-def delete_item(item_id: int) -> ItemResponse:
-    item = db.get_by_id(item_id)
-    if item is None:
-        raise HTTPException(status_code=404, detail="Item not found")
-    db.delete(item_id)
-    return item
+@app.exception_handler(PdfParseError)
+async def pdf_parse_error_handler(request: Request, exc: PdfParseError) -> JSONResponse:
+    return JSONResponse(status_code=422, content={"detail": str(exc)})
+
+
+@app.exception_handler(UnsupportedActionError)
+async def unsupported_action_handler(
+    request: Request, exc: UnsupportedActionError
+) -> JSONResponse:
+    return JSONResponse(status_code=400, content={"detail": str(exc)})
+
+
+@app.exception_handler(GenerationFailedError)
+async def generation_failed_handler(
+    request: Request, exc: GenerationFailedError
+) -> JSONResponse:
+    return JSONResponse(status_code=502, content={"detail": str(exc)})

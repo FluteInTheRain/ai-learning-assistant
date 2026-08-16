@@ -5,9 +5,17 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "fastapi>=0.141.1",
+    "alembic>=1.19.1",
+    "asyncpg>=0.31.0",
+    "fastapi[standard]>=0.141.1",
+    "openai>=3.1.0",
+    "pgvector>=0.5.0",
     "pydantic>=2.13.4",
-    "requests>=2.34.2",
+    "pydantic-settings>=2.15.0",
+    "pypdf>=6.16.1",
+    "python-multipart>=0.0.32",
+    "sqlalchemy[asyncio]>=2.0.52",
+    "tiktoken>=0.13.0",
     "uvicorn>=0.52.1",
 ]
 
@@ -16,7 +24,9 @@ dev = [
     "httpx>=0.28.1",
     "pyright>=1.1.411",
     "pytest>=9.1.1",
+    "pytest-asyncio>=1.4.0",
     "pytest-cov>=7.1.0",
+    "reportlab>=5.0.0",
     "ruff>=0.16.2",
 ]
 
@@ -30,5 +40,8 @@ ignore = []
 
 [tool.pytest.ini_options]
 minversion = "8.0"
-addopts = "-ra -q --cov=src"
+addopts = "-ra -q --cov=app"
 testpaths = ["tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "session"
+asyncio_default_test_loop_scope = "session"
