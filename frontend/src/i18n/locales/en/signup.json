@@ -1,0 +1,32 @@
+{
+  "kicker": "Enrolment",
+  "title": "Create your learning account",
+  "sub": "Thirty seconds to begin the first stage of your track.",
+  "fields": {
+    "fullName": { "label": "Full name", "placeholder": "Minh Khang Nguyen" },
+    "email": { "label": "Email", "placeholder": "you@university.edu" },
+    "password": {
+      "label": "Password",
+      "placeholder": "",
+      "hint": "At least 10 characters; a number or symbol helps."
+    }
+  },
+  "track": {
+    "label": "Track",
+    "options": {
+      "applied": { "title": "Applied", "blurb": "No code needed" },
+      "technical": { "title": "Technical", "blurb": "With labs" }
+    }
+  },
+  "submit": "Create account",
+  "divider": "or",
+  "sso": "Continue with university email",
+  "terms": "By creating an account you agree to Aletheia's Academic Regulations and Data Policy.",
+  "switchNote": "Already enrolled?",
+  "switchAction": "Sign in",
+  "errors": {
+    "emailTaken": "That email is already registered. Try signing in instead.",
+    "generic": "Something went wrong creating your account. Please try again.",
+    "trackRequired": "Choose a track to continue."
+  }
+}
