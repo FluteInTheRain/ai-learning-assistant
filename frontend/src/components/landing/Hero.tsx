@@ -1,3 +1,4 @@
+import { AletheiaMark } from '../AletheiaMark'
 import './Hero.css'
 
 interface HeroProps {
@@ -16,7 +17,9 @@ export function Hero({ kicker, titleLead, titleAccent, body, imgCaption, ctaRoad
       <div className="hero__glow" aria-hidden="true" />
       <div className="hero__content" data-reveal>
         <div className="hero__badge" aria-hidden="true">
-          <span className="hero__badge-mark">A</span>
+          <span className="hero__badge-mark">
+            <AletheiaMark className="hero__badge-icon" />
+          </span>
         </div>
         <div className="hero__kicker">{kicker}</div>
         <h1 className="hero__title">

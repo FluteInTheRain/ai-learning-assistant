@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { ThemeToggle } from '../ThemeToggle'
+import { AletheiaMark } from '../AletheiaMark'
 import type { ResolvedNavItem } from '../../content/types'
 import './LandingHeader.css'
 
@@ -16,7 +17,7 @@ export function LandingHeader({ brand, navItems, ctaLabel, ctaTo }: LandingHeade
       <div className="landing-header__inner">
         <a href="#top" className="landing-header__brand">
           <span className="landing-header__brand-mark" aria-hidden="true">
-            A
+            <AletheiaMark className="landing-header__brand-icon" />
           </span>
           <span className="landing-header__brand-text">
             <span className="landing-header__brand-name">{brand.name}</span>

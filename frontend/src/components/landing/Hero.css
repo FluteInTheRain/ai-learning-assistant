@@ -39,8 +39,11 @@
   border: 1px solid color-mix(in srgb, var(--color-accent) 40%, transparent);
   display: grid;
   place-items: center;
-  font-size: 15px;
   color: var(--color-accent-300);
+}
+.hero__badge-icon {
+  width: 19px;
+  height: 19px;
 }
 .hero__kicker {
   font-size: 10.5px;
