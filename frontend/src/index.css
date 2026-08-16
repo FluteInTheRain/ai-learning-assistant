@@ -407,3 +407,35 @@ textarea.input {
   gap: var(--space-2);
   margin-top: var(--space-2);
 }
+
+/* ---------------------------------------------------------------------- */
+/* Section layout — generic page-section wrapper + heading group, shared  */
+/* across any page built from stacked content sections (not landing-only) */
+/* ---------------------------------------------------------------------- */
+
+.section {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 92px 40px 20px;
+}
+.section-kicker {
+  font-size: 10.5px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 16px;
+}
+.section-title {
+  font-size: 42px;
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.022em;
+  margin: 0;
+}
+.section-lede {
+  font-size: 16px;
+  line-height: 1.62;
+  color: color-mix(in srgb, var(--color-text) 62%, transparent);
+  margin: 0;
+  max-width: 56ch;
+}

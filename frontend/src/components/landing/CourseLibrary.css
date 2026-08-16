@@ -1,0 +1,93 @@
+.courses-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+.courses-head a {
+  font-size: 13.5px;
+  color: var(--color-accent-400);
+  white-space: nowrap;
+}
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 26px;
+}
+.course-card {
+  display: grid;
+  grid-template-columns: 148px 1fr;
+  gap: 22px;
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  background: var(--color-surface);
+}
+.course-card:hover {
+  border-color: color-mix(in srgb, var(--color-accent) 45%, transparent);
+}
+.course-card__image {
+  border-radius: var(--radius-md);
+  border: 1px solid color-mix(in srgb, var(--color-text) 9%, transparent);
+  min-height: 132px;
+  background-image: repeating-linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--color-accent) 14%, transparent) 0 1px,
+    transparent 1px 9px
+  );
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 8px;
+}
+.course-card__image span {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  color: color-mix(in srgb, var(--color-text) 45%, transparent);
+}
+.course-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.course-card__meta-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.course-card__kicker {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+.course-card__title {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.22;
+}
+.course-card__desc {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: color-mix(in srgb, var(--color-text) 56%, transparent);
+}
+.course-card__facts {
+  margin-top: auto;
+  display: flex;
+  gap: 16px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  color: color-mix(in srgb, var(--color-text) 45%, transparent);
+}
+
+@media (max-width: 860px) {
+  .courses-grid {
+    grid-template-columns: 1fr;
+  }
+  .course-card {
+    grid-template-columns: 1fr;
+  }
+}
