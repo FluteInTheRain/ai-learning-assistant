@@ -27,14 +27,7 @@ async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
   return response.json() as Promise<T>
 }
 
-export interface SignupPayload {
-  full_name: string
-  email: string
-  password: string
-  track_preference: TrackPreference
-}
-
-export interface SignupResponseUser {
+export interface AuthUser {
   id: string
   full_name: string
   email: string
@@ -42,14 +35,33 @@ export interface SignupResponseUser {
   created_at: string
 }
 
-export interface SignupResponse {
-  user: SignupResponseUser
+export interface AuthResponse {
+  user: AuthUser
   access_token: string
   token_type: string
 }
 
-export function signup(payload: SignupPayload): Promise<SignupResponse> {
-  return request<SignupResponse>('/auth/signup', {
+export interface SignupPayload {
+  full_name: string
+  email: string
+  password: string
+  track_preference: TrackPreference
+}
+
+export function signup(payload: SignupPayload): Promise<AuthResponse> {
+  return request<AuthResponse>('/auth/signup', {
+    method: 'POST',
+    body: JSON.stringify(payload),
+  })
+}
+
+export interface LoginPayload {
+  email: string
+  password: string
+}
+
+export function login(payload: LoginPayload): Promise<AuthResponse> {
+  return request<AuthResponse>('/auth/login', {
     method: 'POST',
     body: JSON.stringify(payload),
   })

@@ -1,0 +1,20 @@
+{
+  "kicker": "Welcome back",
+  "title": "Sign in",
+  "sub": "Continue from the exact lesson you left.",
+  "fields": {
+    "email": { "label": "Email", "placeholder": "you@university.edu" },
+    "password": { "label": "Password", "placeholder": "" }
+  },
+  "keepSignedIn": "Keep me signed in",
+  "forgotPassword": "Forgot password?",
+  "submit": "Sign in",
+  "divider": "or",
+  "sso": "Continue with university email",
+  "switchNote": "No account yet?",
+  "switchAction": "Create one",
+  "errors": {
+    "invalidCredentials": "Incorrect email or password.",
+    "generic": "Something went wrong signing you in. Please try again."
+  }
+}

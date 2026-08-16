@@ -6,7 +6,14 @@ from pydantic import BaseModel, EmailStr, Field, field_validator
 from app.models.user import TrackPreference
 
 
-class SignupRequest(BaseModel):
+class _EmailNormalizingModel(BaseModel):
+    @field_validator("email", check_fields=False)
+    @classmethod
+    def normalize_email(cls, value: str) -> str:
+        return value.strip().lower()
+
+
+class SignupRequest(_EmailNormalizingModel):
     full_name: str = Field(min_length=1, max_length=200)
     email: EmailStr
     password: str = Field(min_length=10, max_length=72)
@@ -17,10 +24,10 @@ class SignupRequest(BaseModel):
     def strip_full_name(cls, value: str) -> str:
         return value.strip() if isinstance(value, str) else value
 
-    @field_validator("email")
-    @classmethod
-    def normalize_email(cls, value: str) -> str:
-        return value.strip().lower()
+
+class LoginRequest(_EmailNormalizingModel):
+    email: EmailStr
+    password: str
 
 
 class UserOut(BaseModel):
@@ -33,7 +40,7 @@ class UserOut(BaseModel):
     model_config = {"from_attributes": True}
 
 
-class SignupResponse(BaseModel):
+class AuthResponse(BaseModel):
     user: UserOut
     access_token: str
     token_type: str = "bearer"

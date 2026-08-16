@@ -90,3 +90,25 @@ export interface SignupContent {
     trackRequired: string
   }
 }
+
+export interface LoginContent {
+  aside: AuthAsideContent
+  kicker: string
+  title: string
+  sub: string
+  fields: {
+    email: { label: string; placeholder: string }
+    password: { label: string; placeholder: string }
+  }
+  keepSignedIn: string
+  forgotPassword: string
+  submit: string
+  divider: string
+  sso: string
+  switchNote: string
+  switchAction: string
+  errors: {
+    invalidCredentials: string
+    generic: string
+  }
+}
