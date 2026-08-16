@@ -1,0 +1,105 @@
+/*
+ * Design tokens — ported exactly from the "Aletheia" Claude Design project
+ * (`Aletheia Landing/App/Course Flow.dc.html`), which itself layers a
+ * violet/plum palette on top of the shared "Nocturne" component system
+ * (`_ds/nocturne-.../styles.css`) for radius/spacing/button/input/tag/card
+ * shapes. Values below are copied 1:1 from those sources, not approximated.
+ *
+ * Dark is the *default* theme (`:root`), matching the design's own
+ * `:root, [data-theme="dark"]` convention — light is the opt-in variant via
+ * `[data-theme="light"]`, not the other way around.
+ *
+ * One deliberate deviation from the source files: Nocturne's `--color-divider`
+ * is a hardcoded hex (`color-mix(in srgb, #e9e9ed 16%, transparent)`) that
+ * the Aletheia pages never override, so literally it doesn't adapt between
+ * light/dark. Aletheia's own inline styles use `color-mix(in srgb,
+ * var(--color-text) 16%, transparent)` for the equivalent border everywhere
+ * else, so that's what `--color-divider` computes here — same visual weight
+ * in dark mode, but theme-correct in light mode instead of staying a
+ * near-invisible pale line on a white background.
+ *
+ * The design has no danger/error color anywhere (its one destructive
+ * action, "Delete account", is styled as an accent-tinted secondary button,
+ * not red) — so no --color-danger token exists yet. Add one when a real
+ * error/destructive state shows up in a design page, rather than inventing
+ * a color the design never specified.
+ */
+
+:root {
+  color-scheme: dark;
+
+  --color-bg: #150e1c;
+  --color-surface: #221a2c;
+  --color-surface-1: #241a2f;
+  --color-surface-2: #1a1322;
+  --color-text: #f0eaf5;
+
+  --color-accent-100: #f6eefb;
+  --color-accent-200: #e9d9f7;
+  --color-accent-300: #d3b3ee;
+  --color-accent-400: #b287e0;
+  --color-accent-500: #8d5fd6;
+  --color-accent: #8d5fd6;
+  --color-accent-600: #6f3fb8;
+  --color-accent-700: #542f8a;
+  --color-accent-800: #38205c;
+  --color-accent-900: #24153c;
+
+  --color-section: #2c1a4a;
+  --color-section-glow: #402266;
+  --color-section-ghost: #6a4595;
+  --color-on-section: #f5f1fb;
+
+  --color-divider: color-mix(in srgb, var(--color-text) 16%, transparent);
+  --color-focus-ring: var(--color-accent);
+
+  --shadow-sm: 0 0 0 1px #3a2f47;
+  --shadow-md: 0 0 0 1px #4e3f5e, 0 6px 18px rgba(0, 0, 0, 0.55);
+  --shadow-lg: 0 0 0 1px #7a5f92, 0 16px 40px rgba(0, 0, 0, 0.65);
+
+  --font-heading: 'Inter', system-ui, sans-serif;
+  --font-heading-weight: 500;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --space-1: 2.8px;
+  --space-2: 5.6px;
+  --space-3: 8.4px;
+  --space-4: 11.2px;
+  --space-6: 16.8px;
+  --space-8: 22.4px;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  --color-bg: #faf7fc;
+  --color-surface: #ffffff;
+  --color-surface-1: #ffffff;
+  --color-surface-2: #f3ecf7;
+  --color-text: #241a30;
+
+  --color-accent-100: #f4ecfa;
+  --color-accent-200: #e5d3f2;
+  --color-accent-300: #cda6e6;
+  --color-accent-400: #ab78d4;
+  --color-accent-500: #6b3fa8;
+  --color-accent: #6b3fa8;
+  --color-accent-600: #593285;
+  --color-accent-700: #522f80;
+  --color-accent-800: #3a2059;
+  --color-accent-900: #241338;
+
+  --color-section: #efe4f7;
+  --color-section-glow: #e2cdf0;
+  --color-section-ghost: #b98ddb;
+  --color-on-section: #2c1a4a;
+
+  --shadow-sm: 0 1px 2px rgba(40, 20, 60, 0.08);
+  --shadow-md: 0 1px 2px rgba(40, 20, 60, 0.06), 0 8px 24px rgba(40, 20, 60, 0.12);
+  --shadow-lg: 0 4px 8px rgba(40, 20, 60, 0.08), 0 20px 48px rgba(40, 20, 60, 0.18);
+}
